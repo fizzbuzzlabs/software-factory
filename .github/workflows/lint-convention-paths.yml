@@ -1,0 +1,16 @@
+name: lint-convention-paths
+
+# SKILL.md bodies must reference conventions as ${CLAUDE_SKILL_DIR}/../conventions/X.md
+# — a bare ../conventions/ path resolves against the worker's cwd and fails.
+# See .claude/skills/conventions/file-writing.md #10.
+on:
+  pull_request:
+    branches: [main]
+    paths: ['.claude/skills/**', 'scripts/lint-convention-paths.sh']
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/lint-convention-paths.sh

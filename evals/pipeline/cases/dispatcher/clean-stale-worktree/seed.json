@@ -1,0 +1,7 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-45", "title": "Add a privacy page", "status": "Ready for Dev"}
+  ]
+}

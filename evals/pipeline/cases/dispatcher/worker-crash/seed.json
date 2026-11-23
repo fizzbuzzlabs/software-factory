@@ -1,0 +1,8 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 30,
+  "tickets": [
+    {"id": "ACM-130", "title": "Add an about page", "status": "Ready for Dev",
+     "workers": {"dev": {"crash": true}}}
+  ]
+}

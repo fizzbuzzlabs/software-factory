@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+# verifier-web's first-use install state (lock, staging dir, failure marker)
+.claude/skills/verifier-web/.deps-*
+__pycache__/
+*.pyc

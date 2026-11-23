@@ -1,0 +1,8 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 30,
+  "tickets": [
+    {"id": "ACM-110", "title": "Add a dark theme", "status": "Ready for Dev", "artifacts": ["spec.md"],
+     "artifacts_on": "branch"}
+  ]
+}

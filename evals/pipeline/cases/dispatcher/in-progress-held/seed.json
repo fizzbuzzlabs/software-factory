@@ -1,0 +1,8 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-200", "title": "Add an export button", "status": "Ready for Dev", "labels": ["in progress"]},
+    {"id": "ACM-201", "title": "Add an import button", "status": "Ready for Dev"}
+  ]
+}

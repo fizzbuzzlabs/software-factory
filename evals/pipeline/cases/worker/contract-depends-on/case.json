@@ -1,0 +1,13 @@
+{
+  "stage": "architect",
+  "folder": "2026-11-03-acm-207-list-snoozed-reminders-by-wake-time",
+  "timeout_minutes": 90,
+  "ticket": {"id": "ACM-207", "title": "List snoozed reminders by wake time",
+             "description": "Show people what they put off, soonest first. Spec: workflows/2026-11-03-acm-207-list-snoozed-reminders-by-wake-time/spec.md"},
+  "others": [
+    {"id": "ACM-206", "title": "Snooze a reminder", "status": "Ready for QA",
+     "folder": "2026-11-02-acm-206-snooze-a-reminder",
+     "branch_overlays": ["snooze"],
+     "documents": [{"from": "_shared/snooze-contract.md", "to": "contract.md", "box": "[x]"}]}
+  ]
+}

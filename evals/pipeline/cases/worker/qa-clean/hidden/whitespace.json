@@ -1,0 +1,7 @@
+[
+  {"name": "create", "method": "POST", "path": "/reminders", "body": {"title": "Buy milk", "dueAt": "{tomorrow}"},
+   "expect": {"status": 201}, "capture": {"id": "data.id"}},
+  {"name": "whitespace-only title", "method": "PATCH", "path": "/reminders/{id}", "body": {"title": "   "},
+   "expect": {"status": 422, "json": {"error.reason": "invalid_title"}}},
+  {"name": "old title kept", "path": "/reminders/{id}", "expect": {"status": 200, "json": {"data.title": "Buy milk"}}}
+]

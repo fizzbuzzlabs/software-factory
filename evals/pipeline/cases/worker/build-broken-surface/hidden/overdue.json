@@ -1,0 +1,9 @@
+[
+  {"name": "create one due in two seconds", "method": "POST", "path": "/reminders", "body": {"title": "Soon", "dueAt": "{in_2s}"},
+   "expect": {"status": 201}, "capture": {"soon": "data.id"}},
+  {"name": "create one due tomorrow", "method": "POST", "path": "/reminders", "body": {"title": "Later", "dueAt": "{tomorrow}"},
+   "expect": {"status": 201}, "wait_ms": 3500},
+  {"name": "overdue has the first only", "path": "/overdue", "expect": {"status": 200, "length": {"data": 1}, "json": {"data.0.title": "Soon"}}},
+  {"name": "complete it", "method": "POST", "path": "/reminders/{soon}/complete", "expect": {"status": 200}},
+  {"name": "overdue is empty", "path": "/overdue", "expect": {"status": 200, "length": {"data": 0}}}
+]

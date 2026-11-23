@@ -1,0 +1,8 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-50", "title": "Rename the app banner", "status": "Ready for Dev",
+     "workers": {"dev": {"merges_lane_base": true}}}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "TODO: set to this repo's entry points — the files nothing else imports but that are real roots (e.g. src/main.ts, a client bundle entry, an eval/test runner, config files). Do NOT copy another repo's entry values."
+  ],
+  "project": [
+    "TODO: set to this repo's source globs — every source file knip should consider (e.g. src/**/*.ts). Do NOT copy another repo's source layout."
+  ],
+  "ignoreDependencies": ["tsx", "jscpd", "madge"],
+  "ignoreBinaries": ["tsx"]
+}

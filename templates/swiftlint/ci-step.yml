@@ -1,0 +1,49 @@
+# SwiftLint and its baseline ratchet. Paste these steps into the pull-request job
+# in .github/workflows/*.yml. The job needs a macOS runner: the install step
+# downloads SwiftLint's portable macOS build, pinned by version and SHA-256.
+- name: Install SwiftLint
+  run: |
+    version=0.65.1
+    sha256=c1e429b0599cf1b516f369a2d9ec04eaf0e436f3c12b637df8851fa52ff694d0
+    curl -fsSL -o "$RUNNER_TEMP/swiftlint.zip" \
+      "https://github.com/realm/SwiftLint/releases/download/$version/portable_swiftlint.zip"
+    echo "$sha256  $RUNNER_TEMP/swiftlint.zip" | shasum -a 256 -c -
+    unzip -q -o "$RUNNER_TEMP/swiftlint.zip" swiftlint -d "$RUNNER_TEMP/swiftlint"
+    echo "$RUNNER_TEMP/swiftlint" >> "$GITHUB_PATH"
+
+- name: SwiftLint
+  run: |
+    if [ -f .swiftlint-baseline.json ]; then
+      swiftlint lint --strict --quiet --baseline .swiftlint-baseline.json
+    else
+      swiftlint lint --strict --quiet
+    fi
+
+# Only needed on a repo installed with a --write-baseline baseline. SwiftLint
+# filters baselined violations but never fails on an entry that no longer
+# matches, and rewriting the baseline is the one way to grow it. This step
+# compares each rule's count against the base branch, so a fix that rewrites the
+# baseline smaller passes and a rewrite that grows it fails. It skips the PR
+# that adds the baseline.
+- name: SwiftLint baseline only shrinks
+  if: github.event_name == 'pull_request'
+  run: |
+    git fetch --no-tags --depth=1 origin "$GITHUB_BASE_REF"
+    if ! git cat-file -e "origin/$GITHUB_BASE_REF:.swiftlint-baseline.json" 2>/dev/null; then
+      echo "No baseline on $GITHUB_BASE_REF yet; nothing to compare."
+      exit 0
+    fi
+    git show "origin/$GITHUB_BASE_REF:.swiftlint-baseline.json" > "$RUNNER_TEMP/base-baseline.json"
+    head=.swiftlint-baseline.json
+    [ -f "$head" ] || head=/dev/null
+    grown=$(jq -r -n --slurpfile base "$RUNNER_TEMP/base-baseline.json" --slurpfile head "$head" '
+      def totals: group_by(.violation.ruleIdentifier) | map({key: .[0].violation.ruleIdentifier, value: length}) | from_entries;
+      (($base[0] // []) | totals) as $b
+      | (($head[0] // []) | totals) | to_entries[]
+      | select(.value > ($b[.key] // 0))
+      | "\(.key): \($b[.key] // 0) -> \(.value)"')
+    if [ -n "$grown" ]; then
+      echo "The SwiftLint baseline grew. Fix the new violations instead of baselining them:"
+      echo "$grown"
+      exit 1
+    fi

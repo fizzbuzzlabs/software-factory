@@ -1,0 +1,9 @@
+{
+  "stage": "qa", "folder": "2026-11-02-acm-209-snooze-a-reminder", "timeout_minutes": 120,
+  "seed_message": "spec, research, design, contract and implementation",
+  "branch_overlays": ["snooze"],
+  "ticket": {"id": "ACM-209", "title": "Snooze a reminder", "description": "Let people put a reminder off until later."},
+  "documents": [{"from": "_shared/snooze-spec-again.md", "to": "spec.md"}, {"from": "_shared/research.md", "to": "research.md"},
+                {"from": "_shared/snooze-design.md", "to": "design.md"},
+                {"from": "_shared/snooze-contract.md", "to": "contract.md", "box": "[x]"}]
+}

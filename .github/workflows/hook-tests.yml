@@ -1,0 +1,18 @@
+name: hook-tests
+
+# Runs the unit tests beside the hooks in .claude/hooks (test_*.py). They use only the
+# standard library, so the runner's python3 is enough.
+on:
+  pull_request:
+    branches: [main]
+    paths: ['.claude/hooks/**', '.github/workflows/hook-tests.yml']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -I -B -m unittest discover -s .claude/hooks -p 'test_*.py' -v

@@ -1,0 +1,5 @@
+// Paste these three lines into the "scripts" block of this repo's package.json.
+// They assume scripts/debt/ was copied in verbatim and tsx is a devDependency.
+    "debt": "tsx scripts/debt/run.ts",
+    "debt:check": "tsx scripts/debt/run.ts --check",
+    "debt:baseline:update": "tsx scripts/debt/run.ts --update-baseline"

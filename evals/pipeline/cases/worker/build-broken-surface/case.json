@@ -1,0 +1,7 @@
+{
+  "stage": "dev", "folder": "2026-11-02-acm-207-overdue-reminders", "timeout_minutes": 90,
+  "seed_message": "spec, research, design and contract",
+  "main_overlays": ["mounted-features"],
+  "ticket": {"id": "ACM-207", "title": "Overdue reminders", "description": "Show what is past due and still open."},
+  "documents": [{"from": "_shared/research.md", "to": "research.md"}]
+}

@@ -1,0 +1,9 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 45,
+  "tickets": [
+    {"id": "ACM-210", "title": "Add a search box", "status": "Ready for Dev",
+     "workers": {"dev": {"delay": 25, "reveals": ["ACM-211"]}}},
+    {"id": "ACM-211", "title": "Add a clear-search button", "status": "Ready for Dev", "hidden": true}
+  ]
+}

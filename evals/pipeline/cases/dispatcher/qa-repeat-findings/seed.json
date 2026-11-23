@@ -1,0 +1,10 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-70", "title": "Reject reminders dated in the past", "status": "Ready for QA",
+     "workers": {"qa": {"summary": "1 defect: the past-date guard is missing",
+                        "extra": {"route": "ready_for_dev",
+                                  "findings": ["DEF-1: POST /reminders accepts a date in the past (expected 422, got 201)"]}}}}
+  ]
+}

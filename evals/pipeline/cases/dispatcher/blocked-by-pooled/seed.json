@@ -1,0 +1,9 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-30", "title": "Add a reminders table", "status": "Ready for QA"},
+    {"id": "ACM-31", "title": "Show reminders on the home screen", "status": "Ready for Dev", "blockedBy": ["ACM-30"]},
+    {"id": "ACM-32", "title": "Rename the settings page", "status": "Ready for Dev", "labels": ["needs attention"]}
+  ]
+}

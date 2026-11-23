@@ -1,0 +1,9 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-290", "title": "Reminder snoozing", "status": "Todo", "description": "Let visitors snooze a reminder."},
+    {"id": "ACM-291", "title": "Snooze a reminder", "status": "In Review", "parent": "ACM-290"},
+    {"id": "ACM-292", "title": "List snoozed reminders", "status": "In Review", "parent": "ACM-290"}
+  ]
+}

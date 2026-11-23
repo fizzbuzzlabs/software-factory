@@ -1,0 +1,9 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 30,
+  "tickets": [
+    {"id": "ACM-65", "title": "Add a status page", "status": "Ready for Dev",
+     "workers": {"dev": {"status": "blocked", "writes": {}, "summary": "verify gate BLOCKED: the app launcher found port 3000 taken",
+                         "extra": {"verify": "BLOCKED", "verify_blocked_reason": "port-busy"}}}}
+  ]
+}

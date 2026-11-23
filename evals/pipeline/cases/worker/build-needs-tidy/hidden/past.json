@@ -1,0 +1,9 @@
+[
+  {"name": "due yesterday", "method": "POST", "path": "/reminders", "body": {"title": "Late", "dueAt": "{yesterday}"},
+   "expect": {"status": 422, "json": {"error.reason": "due_in_past"}}},
+  {"name": "nothing stored", "path": "/reminders", "expect": {"status": 200, "length": {"data": 0}}},
+  {"name": "due tomorrow", "method": "POST", "path": "/reminders", "body": {"title": "Soon", "dueAt": "{tomorrow}"},
+   "expect": {"status": 201, "json": {"data.status": "open"}}},
+  {"name": "bad title still wins its own reason", "method": "POST", "path": "/reminders", "body": {"title": "", "dueAt": "{tomorrow}"},
+   "expect": {"status": 422, "json": {"error.reason": "invalid_title"}}}
+]

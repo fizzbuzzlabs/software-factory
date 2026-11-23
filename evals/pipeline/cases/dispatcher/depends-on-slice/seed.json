@@ -1,0 +1,11 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 45,
+  "tickets": [
+    {"id": "ACM-310", "title": "Export reminders by tag", "status": "Spec Done",
+     "workers": {"architect": {"extra": {"depends_on": [
+       {"ticket": "ACM-312", "relies_on": "the `tags` field in src/reminders/reminder.ts"}]}}}},
+    {"id": "ACM-311", "title": "Reminder tags", "status": "Todo", "description": "Let visitors tag reminders."},
+    {"id": "ACM-312", "title": "Tag a reminder", "status": "Ready for QA", "parent": "ACM-311"}
+  ]
+}

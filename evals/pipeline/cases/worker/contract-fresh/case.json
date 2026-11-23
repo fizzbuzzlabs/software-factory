@@ -1,0 +1,7 @@
+{
+  "stage": "architect",
+  "folder": "2026-11-02-acm-201-snooze-a-reminder",
+  "timeout_minutes": 90,
+  "ticket": {"id": "ACM-201", "title": "Snooze a reminder",
+             "description": "Let people put a reminder off until later. Spec: workflows/2026-11-02-acm-201-snooze-a-reminder/spec.md"}
+}

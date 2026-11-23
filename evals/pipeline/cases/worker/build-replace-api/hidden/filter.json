@@ -1,0 +1,11 @@
+[
+  {"name": "create a", "method": "POST", "path": "/reminders", "body": {"title": "A", "dueAt": "{tomorrow}"}, "expect": {"status": 201}, "capture": {"a": "data.id"}},
+  {"name": "create b", "method": "POST", "path": "/reminders", "body": {"title": "B", "dueAt": "{tomorrow}"}, "expect": {"status": 201}},
+  {"name": "create c", "method": "POST", "path": "/reminders", "body": {"title": "C", "dueAt": "{tomorrow}"}, "expect": {"status": 201}},
+  {"name": "complete a", "method": "POST", "path": "/reminders/{a}/complete", "expect": {"status": 200}},
+  {"name": "open only", "path": "/reminders?status=open", "expect": {"status": 200, "length": {"data": 2}, "json": {"data.0.status": "open", "data.1.status": "open"}}},
+  {"name": "done only", "path": "/reminders?status=done", "expect": {"status": 200, "length": {"data": 1}, "json": {"data.0.status": "done"}}},
+  {"name": "everything", "path": "/reminders", "expect": {"status": 200, "length": {"data": 3}}},
+  {"name": "unknown status", "path": "/reminders?status=later", "expect": {"status": 422, "json": {"error.reason": "invalid_status"}}},
+  {"name": "digest unchanged", "path": "/digest", "expect": {"status": 200, "json": {"data.open": 2, "data.done": 1}}}
+]

@@ -1,0 +1,59 @@
+name: plugin-version-bump
+
+# The plugin version in plugin/.claude-plugin/plugin.json is the cache-buster:
+# consuming app repos only re-pull software-factory when it changes.
+# So any change to a shipped path MUST be accompanied by a version bump, or
+# downstream Claude keeps running the stale cached plugin.
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  require-version-bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require a version bump when shipped paths change
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          set -euo pipefail
+          base="origin/${BASE_REF}"
+          manifest="plugin/.claude-plugin/plugin.json"
+
+          # Paths that ship with the plugin. Changes here must bump the version.
+          # .claude/hooks is shipped wholesale, but the repo-only harness hooks
+          # (guard-protected-paths, require-version-bump) aren't registered in
+          # hooks.json and have no downstream effect, so exclude them.
+          shipped=(
+            .claude/skills .claude/agents .claude/hooks
+            ':(exclude).claude/hooks/guard-protected-paths.py'
+            ':(exclude).claude/hooks/require-version-bump.py'
+          )
+
+          changed=$(git diff --name-only "$base"...HEAD -- "${shipped[@]}")
+          if [ -z "$changed" ]; then
+            echo "No shipped-path changes in this PR; version bump not required."
+            exit 0
+          fi
+
+          echo "Shipped paths changed in this PR:"
+          echo "$changed" | sed 's/^/  - /'
+
+          head_ver=$(jq -r '.version // ""' "$manifest")
+          base_ver=$(git show "$base:$manifest" 2>/dev/null | jq -r '.version // ""' || echo "")
+          echo "base version: '${base_ver}'  head version: '${head_ver}'"
+
+          if [ -z "$head_ver" ]; then
+            echo "::error file=${manifest}::plugin.json is missing a version field."
+            exit 1
+          fi
+          if [ "$head_ver" = "$base_ver" ]; then
+            echo "::error file=${manifest}::Shipped paths changed but the plugin version is still ${base_ver}. Bump \"version\" in ${manifest} so consuming repos refresh the plugin."
+            exit 1
+          fi
+
+          echo "Version bumped ${base_ver} -> ${head_ver}. OK."

@@ -1,0 +1,12 @@
+{
+  "stage": "architect", "folder": "2026-11-02-acm-211-snooze-a-reminder", "timeout_minutes": 60,
+  "seed_message": "spec, research, design, contract, implementation and test plan",
+  "branch_overlays": ["snooze"],
+  "ticket": {"id": "ACM-211", "title": "Snooze a reminder", "description": "Let people put a reminder off until later.",
+             "status": "Spec Done"},
+  "comments": ["**qa — done — 2026-11-03**\n\nProduced: acme/acm-211-snooze-a-reminder@seed\n\nCodified 2 cases, both green. One blocking ambiguity routes this back to the architect.\n\n**Findings**\n- AMB-1 — test-plan.md (blocking AMB) — \"A snooze takes effect and ends by itself\" — ambiguity → architect: the contract says what a snooze does on an open reminder and nothing about one that is already snoozed. The spec says people open the full list mostly to snooze a reminder again. Readings: the new instant replaces the old one; the request is rejected; only a later instant is accepted."],
+  "documents": [{"from": "_shared/snooze-spec-again.md", "to": "spec.md"}, {"from": "_shared/research.md", "to": "research.md"},
+                {"from": "_shared/snooze-design.md", "to": "design.md"},
+                {"from": "_shared/snooze-contract.md", "to": "contract.md", "box": "[x]"},
+                {"from": "_shared/snooze-test-plan.md", "to": "test-plan.md"}]
+}

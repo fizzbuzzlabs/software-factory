@@ -1,0 +1,10 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-300", "title": "List snoozed reminders by wake time", "status": "Spec Done",
+     "workers": {"architect": {"extra": {"depends_on": [
+       {"ticket": "ACM-301", "relies_on": "the snoozed status and `snoozedUntil` in src/reminders/reminder.ts"}]}}}},
+    {"id": "ACM-301", "title": "Snooze a reminder", "status": "Ready for QA"}
+  ]
+}

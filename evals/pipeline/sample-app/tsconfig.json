@@ -1,0 +1,14 @@
+{
+  "extends": ["./tsconfig.principles.json"],
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src", "scripts", "eslint.config.ts", "vitest.config.ts"]
+}

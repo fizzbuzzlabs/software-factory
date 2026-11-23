@@ -1,0 +1,11 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 45,
+  "tickets": [
+    {"id": "ACM-280", "title": "Reminder lists", "status": "Todo", "description": "Group reminders into lists."},
+    {"id": "ACM-281", "title": "Group reminders by list", "status": "Ready for QA", "parent": "ACM-280",
+     "contract_extra": "\n## Footprint\n\n- `sample-app`: `src/reminders/**`\n"},
+    {"id": "ACM-285", "title": "Sort reminders by due date", "status": "Ready for Dev",
+     "contract_extra": "\n## Footprint\n\n- `sample-app`: `src/reminders/list.ts`\n"}
+  ]
+}

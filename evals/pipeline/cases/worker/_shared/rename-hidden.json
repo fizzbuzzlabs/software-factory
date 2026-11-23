@@ -1,0 +1,176 @@
+[
+ {
+  "name": "create",
+  "method": "POST",
+  "path": "/reminders",
+  "body": {
+   "title": "Buy mlik",
+   "dueAt": "{tomorrow}"
+  },
+  "expect": {
+   "status": 201,
+   "json": {
+    "data.status": "open"
+   }
+  },
+  "capture": {
+   "id": "data.id",
+   "due": "data.dueAt"
+  }
+ },
+ {
+  "name": "rename",
+  "method": "PATCH",
+  "path": "/reminders/{id}",
+  "body": {
+   "title": "Buy milk"
+  },
+  "expect": {
+   "status": 200,
+   "json": {
+    "data.title": "Buy milk",
+    "data.status": "open"
+   },
+   "present": [
+    "data.id",
+    "data.dueAt"
+   ]
+  }
+ },
+ {
+  "name": "read back alone",
+  "path": "/reminders/{id}",
+  "expect": {
+   "status": 200,
+   "json": {
+    "data.title": "Buy milk"
+   }
+  }
+ },
+ {
+  "name": "read back in the list",
+  "path": "/reminders",
+  "expect": {
+   "status": 200,
+   "json": {
+    "data.0.title": "Buy milk"
+   },
+   "length": {
+    "data": 1
+   }
+  }
+ },
+ {
+  "name": "empty title",
+  "method": "PATCH",
+  "path": "/reminders/{id}",
+  "body": {
+   "title": ""
+  },
+  "expect": {
+   "status": 422,
+   "json": {
+    "error.reason": "invalid_title"
+   }
+  }
+ },
+ {
+  "name": "title that is not text",
+  "method": "PATCH",
+  "path": "/reminders/{id}",
+  "body": {
+   "title": 7
+  },
+  "expect": {
+   "status": 422,
+   "json": {
+    "error.reason": "invalid_title"
+   }
+  }
+ },
+ {
+  "name": "missing title",
+  "method": "PATCH",
+  "path": "/reminders/{id}",
+  "body": {},
+  "expect": {
+   "status": 422,
+   "json": {
+    "error.reason": "invalid_title"
+   }
+  }
+ },
+ {
+  "name": "title of 121 characters",
+  "method": "PATCH",
+  "path": "/reminders/{id}",
+  "body": {
+   "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "expect": {
+   "status": 422,
+   "json": {
+    "error.reason": "invalid_title"
+   }
+  }
+ },
+ {
+  "name": "old title kept after rejections",
+  "path": "/reminders/{id}",
+  "expect": {
+   "status": 200,
+   "json": {
+    "data.title": "Buy milk"
+   }
+  }
+ },
+ {
+  "name": "title of 120 characters",
+  "method": "PATCH",
+  "path": "/reminders/{id}",
+  "body": {
+   "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "expect": {
+   "status": 200
+  }
+ },
+ {
+  "name": "missing reminder",
+  "method": "PATCH",
+  "path": "/reminders/no-such-id",
+  "body": {
+   "title": "x"
+  },
+  "expect": {
+   "status": 404,
+   "json": {
+    "error.reason": "not_found"
+   }
+  }
+ },
+ {
+  "name": "malformed body",
+  "method": "PATCH",
+  "path": "/reminders/{id}",
+  "raw": "not json",
+  "expect": {
+   "status": 400,
+   "json": {
+    "error.reason": "malformed_json"
+   }
+  }
+ },
+ {
+  "name": "body that is not an object",
+  "method": "PATCH",
+  "path": "/reminders/{id}",
+  "raw": "[1,2]",
+  "expect": {
+   "status": 400,
+   "json": {
+    "error.reason": "malformed_json"
+   }
+  }
+ }
+]

@@ -1,0 +1,14 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 45,
+  "tickets": [
+    {"id": "ACM-60", "title": "Add a healthcheck route", "status": "Ready for Dev",
+     "workers": {"dev": [
+       {"status": "blocked", "delay": 4, "writes": {}, "summary": "verify gate BLOCKED: the app launcher found port 3000 taken",
+        "extra": {"verify": "BLOCKED", "verify_blocked_reason": "port-busy"}},
+       {"status": "done", "delay": 4}
+     ]}},
+    {"id": "ACM-61", "title": "Add a version route", "status": "Ready for Dev",
+     "workers": {"dev": {"delay": 40}}}
+  ]
+}

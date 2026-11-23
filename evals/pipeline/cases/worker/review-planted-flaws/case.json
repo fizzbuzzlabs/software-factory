@@ -1,0 +1,8 @@
+{
+  "stage": "cto",
+  "folder": "2026-11-02-acm-202-snooze-a-reminder",
+  "timeout_minutes": 60,
+  "seed_message": "spec, research, design and contract",
+  "ticket": {"id": "ACM-202", "title": "Snooze a reminder",
+             "description": "Let people put a reminder off until later. Spec: workflows/2026-11-02-acm-202-snooze-a-reminder/spec.md"}
+}

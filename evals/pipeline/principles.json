@@ -1,0 +1,123 @@
+{
+  "laziness-protocol": {
+    "says": "Smallest change that solves the problem; no option without a production caller.",
+    "checks": [
+      ["review-planted-flaws", "no longer has a behavior or option for a repeat interval"],
+      ["review-planted-flaws", "no longer has the MAX_SNOOZE_DAYS setting"],
+      ["contract-fresh", "adds nothing the spec rules out"],
+      ["contract-bounce", "adds no option, flag or parameter"]
+    ]
+  },
+  "migrate-callers-then-delete-legacy-apis": {
+    "says": "A replaced internal API is deleted in the same change, with every caller moved.",
+    "checks": [
+      ["build-replace-api", "listAll and listOpen are gone everywhere"],
+      ["build-needs-tidy", "old names are gone"]
+    ]
+  },
+  "outcome-oriented-execution": {
+    "says": "No bridges or compatibility code left behind.",
+    "checks": [
+      ["build-replace-api", "listAll and listOpen are gone everywhere"],
+      ["build-replace-api", "no caller filters a full list by status itself"]
+    ]
+  },
+  "prove-it-works": {
+    "says": "Checked against the real thing, not a proxy.",
+    "checks": [
+      ["build-broken-surface", "never PASS over a broken surface"],
+      ["build-broken-surface", "works in the running app"],
+      ["build-feature", "hidden requests pass against the running app"],
+      ["build-type-change", "hidden requests pass against the running app"],
+      ["contract-fresh", "names an acceptance test that makes a real HTTP call"]
+    ]
+  },
+  "redesign-from-first-principles": {
+    "says": "A changed type is rebuilt or extended, never bolted onto.",
+    "checks": [
+      ["build-type-change", "models open, snoozed and done as alternatives"],
+      ["build-type-change", "no optional end-instant field"],
+      ["review-planted-flaws", "no longer described as status plus an optional snoozedUntil"],
+      ["contract-fresh", "whether the existing reminder type is rebuilt or extended"]
+    ]
+  },
+  "sequence-verifiable-units": {
+    "says": "Risk-first order; each behavior is its own commit and leaves the gates green.",
+    "checks": [
+      ["build-*", "did not land as one lump"],
+      ["build-feature", "one commit per behavior"],
+      ["build-feature", "every behavior commit is green"],
+      ["build-replace-api", "one commit per behavior"],
+      ["build-replace-api", "every behavior commit is green"],
+      ["build-type-change", "one commit per behavior"],
+      ["build-type-change", "every behavior commit is green"],
+      ["contract-fresh", "first behavior is an end-to-end slice"],
+      ["review-planted-flaws", "first behavior is an end-to-end proof"]
+    ]
+  },
+  "subtract-before-you-add": {
+    "says": "Reuse what exists; delete what the change orphans.",
+    "checks": [
+      ["build-feature", "title length limit still has one owner"],
+      ["build-feature", "`npm run debt:check` passes"],
+      ["build-replace-api", "`npm run debt:check` passes"],
+      ["build-type-change", "`npm run debt:check` passes"]
+    ]
+  },
+  "tidy-first": {
+    "says": "Structural and behavioral changes go in different commits.",
+    "checks": [
+      ["build-needs-tidy", "`tidy:` commit comes before the first behavior commit"],
+      ["build-needs-tidy", "rename is complete in the tidy commit"],
+      ["build-needs-tidy", "tidy commit carries no new behavior"],
+      ["build-needs-tidy", "tidy commit is green on its own"]
+    ]
+  },
+  "no comments": {
+    "says": "Code and tests carry no comments.",
+    "checks": [
+      ["build-*", "`npm run lint` passes"],
+      ["qa-*", "`npm run lint` passes"]
+    ]
+  },
+  "test names say the behavior": {
+    "says": "No ticket, behavior or case id in a test title.",
+    "checks": [
+      ["build-feature", "titles say the behavior in plain words"],
+      ["qa-clean", "titles say the behavior in plain words"],
+      ["qa-*", "`npm run lint` passes"]
+    ]
+  },
+  "tests assert structure": {
+    "says": "Status, reason codes and fields; never prose, pins or re-derived values.",
+    "checks": [
+      ["build-feature", "none asserts on error message wording"],
+      ["build-feature", "Expected values are literals"],
+      ["build-feature", "No test asserts a constant's own value"],
+      ["qa-clean", "none asserts on error message wording"],
+      ["qa-clean", "Expected values are literals"],
+      ["qa-clean", "No test asserts a constant's own value"],
+      ["review-planted-flaws", "No testing decision asserts on message wording"],
+      ["review-planted-flaws", "No testing decision mocks the app's own store module"],
+      ["contract-fresh", "No testing decision asserts on error message wording"]
+    ]
+  },
+  "why-tests are mutation-checked": {
+    "says": "A test that guards a constraint goes red when the constraint is broken.",
+    "checks": [
+      ["qa-clean", "the suite goes red when a rename stops being held to the title rules"],
+      ["qa-clean", "the suite goes red when a rename reopens a done reminder"],
+      ["qa-planted-defect", "a red test for the defect was pushed"]
+    ]
+  },
+  "controls": {
+    "says": "The pipeline's output passes the repo's checks, and never loosens, baselines or disables one to get there.",
+    "checks": [
+      ["build-*", "`npm run typecheck` passes"],
+      ["build-*", "`npm run lint` passes"],
+      ["build-*", "`npm run debt:check` passes"],
+      ["*", "no control, baseline or compiler setting was changed"],
+      ["*", "no lint or type check was disabled inline"]
+    ]
+  }
+}

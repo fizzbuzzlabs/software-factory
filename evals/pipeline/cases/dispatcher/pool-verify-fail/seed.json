@@ -1,0 +1,10 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 50,
+  "verify": {"rules": [{"if_present": "src/acm-121.txt", "verdict": "FAIL",
+                        "reason": "GET /reminders returns 500 once the ACM-121 change is in the tree"}]},
+  "tickets": [
+    {"id": "ACM-120", "title": "Add reminder notes", "status": "Ready for QA"},
+    {"id": "ACM-121", "title": "Paginate reminders", "status": "Ready for QA"}
+  ]
+}

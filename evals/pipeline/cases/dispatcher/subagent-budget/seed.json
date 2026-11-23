@@ -1,0 +1,150 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {
+      "id": "ACM-101",
+      "title": "Export reminders",
+      "status": "Spec Done",
+      "workers": {
+        "architect": {
+          "status": "blocked",
+          "delay": 30,
+          "writes": {},
+          "summary": "blocked: the spec names two storage options and picks neither; needs a product decision",
+          "extra": {
+            "open_questions": [
+              "Which store holds this: the reminders table or a new one?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ACM-102",
+      "title": "Import reminders",
+      "status": "Spec Done",
+      "workers": {
+        "architect": {
+          "status": "blocked",
+          "delay": 30,
+          "writes": {},
+          "summary": "blocked: the spec names two storage options and picks neither; needs a product decision",
+          "extra": {
+            "open_questions": [
+              "Which store holds this: the reminders table or a new one?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ACM-103",
+      "title": "Snooze a reminder",
+      "status": "Spec Done",
+      "workers": {
+        "architect": {
+          "status": "blocked",
+          "delay": 30,
+          "writes": {},
+          "summary": "blocked: the spec names two storage options and picks neither; needs a product decision",
+          "extra": {
+            "open_questions": [
+              "Which store holds this: the reminders table or a new one?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ACM-104",
+      "title": "Archive a reminder",
+      "status": "Spec Done",
+      "workers": {
+        "architect": {
+          "status": "blocked",
+          "delay": 30,
+          "writes": {},
+          "summary": "blocked: the spec names two storage options and picks neither; needs a product decision",
+          "extra": {
+            "open_questions": [
+              "Which store holds this: the reminders table or a new one?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ACM-105",
+      "title": "Pin a reminder",
+      "status": "Spec Done",
+      "workers": {
+        "architect": {
+          "status": "blocked",
+          "delay": 30,
+          "writes": {},
+          "summary": "blocked: the spec names two storage options and picks neither; needs a product decision",
+          "extra": {
+            "open_questions": [
+              "Which store holds this: the reminders table or a new one?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ACM-106",
+      "title": "Tag a reminder",
+      "status": "Spec Done",
+      "workers": {
+        "architect": {
+          "status": "blocked",
+          "delay": 30,
+          "writes": {},
+          "summary": "blocked: the spec names two storage options and picks neither; needs a product decision",
+          "extra": {
+            "open_questions": [
+              "Which store holds this: the reminders table or a new one?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ACM-107",
+      "title": "Share a reminder",
+      "status": "Spec Done",
+      "workers": {
+        "architect": {
+          "status": "blocked",
+          "delay": 30,
+          "writes": {},
+          "summary": "blocked: the spec names two storage options and picks neither; needs a product decision",
+          "extra": {
+            "open_questions": [
+              "Which store holds this: the reminders table or a new one?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "ACM-108",
+      "title": "Duplicate a reminder",
+      "status": "Spec Done",
+      "workers": {
+        "architect": {
+          "status": "blocked",
+          "delay": 30,
+          "writes": {},
+          "summary": "blocked: the spec names two storage options and picks neither; needs a product decision",
+          "extra": {
+            "open_questions": [
+              "Which store holds this: the reminders table or a new one?"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

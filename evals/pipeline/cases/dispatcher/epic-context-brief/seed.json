@@ -1,0 +1,9 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 45,
+  "tickets": [
+    {"id": "ACM-20", "title": "Shared lists", "status": "Todo",
+     "description": "Households share lists.\n\n## Cross-cutting rules\n\n- Every new endpoint answers with the envelope `{ data, error }` and never a bare array.\n- List ownership is checked in one place, the `lists/access` module; no slice re-implements it."},
+    {"id": "ACM-21", "title": "Share a list with a household member", "status": "Spec Done", "parent": "ACM-20"}
+  ]
+}

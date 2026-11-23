@@ -1,0 +1,11 @@
+{
+  "roots": ["scripts", "src"],
+  "exclude": [],
+  "tests": ["*.test.*"],
+  "allow": [],
+  "ticket_keys": ["ACM"],
+  "rules": {
+    "comment": "strict",
+    "history-id": "strict"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 45,
+  "tickets": [
+    {"id": "ACM-10", "title": "Reminders", "status": "Todo",
+     "description": "Let visitors create and list reminders."},
+    {"id": "ACM-11", "title": "Create a reminder", "status": "Ready for QA", "parent": "ACM-10"},
+    {"id": "ACM-12", "title": "List reminders", "status": "Ready for QA", "parent": "ACM-10"}
+  ]
+}

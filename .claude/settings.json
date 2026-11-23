@@ -1,0 +1,59 @@
+{
+  "autoMemoryEnabled": false,
+  "permissions": {
+    "allow": [
+      "mcp__linear",
+      "mcp__paper",
+      "mcp__github",
+      "Edit(.claude/skills/**)",
+      "Write(.claude/skills/**)",
+      "Edit(.claude/agents/**)",
+      "Write(.claude/agents/**)",
+      "Bash(git worktree *)",
+      "Bash(git -C * worktree *)",
+      "Bash(git branch -D *)",
+      "Bash(git -C * branch -D *)",
+      "Bash(git -C * fetch *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard-protected-paths.py",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard-readonly-search.py",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard-chained-cleanup.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/require-version-bump.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

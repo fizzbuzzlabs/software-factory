@@ -1,0 +1,8 @@
+{
+  "stage": "dev", "folder": "2026-11-02-acm-206-reject-reminders-due-in-the-past", "timeout_minutes": 90,
+  "seed_message": "spec, research, design and contract",
+  "main_overlays": ["body-module"],
+  "delete_on_main": ["src/reminders/reminder.test.ts"],
+  "ticket": {"id": "ACM-206", "title": "Reject reminders due in the past", "description": "A reminder for a time that has already passed is a mistake."},
+  "documents": [{"from": "_shared/research.md", "to": "research.md"}]
+}

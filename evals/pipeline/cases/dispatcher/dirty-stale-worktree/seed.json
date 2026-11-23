@@ -1,0 +1,7 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 30,
+  "tickets": [
+    {"id": "ACM-40", "title": "Validate reminder dates", "status": "Ready for Dev"}
+  ]
+}

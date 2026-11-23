@@ -1,0 +1,9 @@
+sections: The contract has all of these sections with real content: Behaviors, Modules, Testing Decisions, Anti-Behaviors.
+covers-spec: Every must-have requirement of the spec (snooze until an instant, reopens by itself when the time passes, full list including snoozed, reject non-future or invalid time, reject snoozing a done reminder, missing reminder, completing a snoozed reminder ends the snooze) is covered by a behavior.
+first-behavior: The first behavior is an end-to-end slice through the HTTP surface that proves the riskiest assumption of the change, and the contract says why it comes first; it is not just a trivial or setup step.
+type-shape: The Modules section says whether the existing reminder type is rebuilt or extended for the snoozed state, and the shape it describes is not a bolt-on (not an optional field or boolean that only means something under one status, and not old and new shapes side by side).
+seam: Each behavior that crosses the HTTP boundary names an acceptance test that makes a real HTTP call, not only a pure-function test.
+observable-rejections: For each way a snooze can be rejected, the contract names the reason that becomes observable to the caller or the log.
+no-gold-plating: The contract adds no feature the spec rules out (no recurring snooze, no duration shortcuts, no notifications) and no configuration option, flag or parameter that no caller sets. Settling an edge case the spec leaves open is not gold-plating.
+no-prose-assertions: No testing decision asserts on error message wording, log wording or other prose; rejections are checked by status and reason code.
+no-code-in-behaviors: The `## Behaviors` section describes outcomes for a caller, with no source file paths and no implementation code. HTTP routes, status codes, reason codes and wire field names are fine. Judge only that section: `## Footprint` exists to list files, and Modules and Testing Decisions may name them.

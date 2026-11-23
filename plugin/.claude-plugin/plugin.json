@@ -1,0 +1,9 @@
+{
+  "name": "software-factory",
+  "version": "0.9.18",
+  "description": "Spec → research → design → contract → implement → QA workflow skills and the pipeline agents (architect, dev, qa, cto, systems-engineer) for the software factory.",
+  "author": {
+    "name": "FizzBuzz Labs"
+  },
+  "license": "MIT"
+}

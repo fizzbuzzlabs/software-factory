@@ -1,0 +1,12 @@
+{
+  "name": "software-factory",
+  "description": "Workflow skills (spec → research → design → contract → implement → QA) and pipeline agents for the software factory.",
+  "owner": { "name": "FizzBuzz Labs" },
+  "plugins": [
+    {
+      "name": "software-factory",
+      "source": "./plugin",
+      "description": "Software factory workflow skills and pipeline agents."
+    }
+  ]
+}

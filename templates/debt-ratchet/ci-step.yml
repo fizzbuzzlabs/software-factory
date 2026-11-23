@@ -1,0 +1,10 @@
+# Tech-debt ratchet: fails the build if duplication % (past its slack margin)
+# or the circular-dependency count regressed past debt-baseline.json. The
+# scanners (knip/jscpd/madge) run against source files only — no database or
+# other service needed, and the three scans together take a few seconds.
+#
+# Paste this step into an existing job in .github/workflows/*.yml, after the
+# repo's dependencies are installed (npm ci). It runs the same npm run
+# debt:check the pre-PR gate in workflow-implement runs locally.
+- name: Tech-debt ratchet
+  run: npm run debt:check

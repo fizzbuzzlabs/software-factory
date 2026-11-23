@@ -1,0 +1,41 @@
+# Type-aware lint, typecheck and the suppressions ratchet. Paste these steps into
+# the pull-request job in .github/workflows/*.yml, after the repo's dependencies
+# are installed (npm ci).
+#
+# Type-aware linting builds a TypeScript program for every file, so expect lint
+# to take about as long as a full typecheck.
+- name: Typecheck every tsconfig project
+  run: npm run typecheck
+
+- name: Lint
+  run: npm run lint
+
+# Only needed on a repo installed with an eslint --suppress-all baseline.
+# Plain lint already fails on a new violation, and on a suppression that no
+# longer matches anything until it is pruned. This step catches the other way
+# the baseline can grow: rerunning --suppress-all. It compares each rule's total
+# suppressed count against the base branch, so moving or renaming a file with
+# suppressions still passes. It skips the PR that adds the baseline.
+- name: ESLint suppressions only shrink
+  if: github.event_name == 'pull_request'
+  run: |
+    git fetch --no-tags --depth=1 origin "$GITHUB_BASE_REF"
+    if ! git cat-file -e "origin/$GITHUB_BASE_REF:eslint-suppressions.json" 2>/dev/null; then
+      echo "No baseline on $GITHUB_BASE_REF yet; nothing to compare."
+      exit 0
+    fi
+    git show "origin/$GITHUB_BASE_REF:eslint-suppressions.json" > "$RUNNER_TEMP/base-suppressions.json"
+    head=eslint-suppressions.json
+    [ -f "$head" ] || head=/dev/null
+    grown=$(jq -r -n --slurpfile base "$RUNNER_TEMP/base-suppressions.json" --slurpfile head "$head" '
+      def totals: [to_entries[] | .value | to_entries[] | {rule: .key, count: .value.count}]
+        | group_by(.rule) | map({key: .[0].rule, value: (map(.count) | add)}) | from_entries;
+      (($base[0] // {}) | totals) as $b
+      | (($head[0] // {}) | totals) | to_entries[]
+      | select(.value > ($b[.key] // 0))
+      | "\(.key): \($b[.key] // 0) -> \(.value)"')
+    if [ -n "$grown" ]; then
+      echo "ESLint suppressions grew. Fix the new violations instead of suppressing them:"
+      echo "$grown"
+      exit 1
+    fi

@@ -1,0 +1,7 @@
+{
+  "stage": "dev", "folder": "2026-11-02-acm-204-filter-reminders-by-status", "timeout_minutes": 90,
+  "seed_message": "spec, research, design and contract",
+  "main_overlays": ["two-listings"],
+  "ticket": {"id": "ACM-204", "title": "Filter reminders by status", "description": "Let callers ask for only open or only done reminders."},
+  "documents": [{"from": "_shared/research.md", "to": "research.md"}]
+}

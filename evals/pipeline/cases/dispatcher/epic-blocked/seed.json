@@ -1,0 +1,11 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-269", "title": "Move reminders to the new store", "status": "Backlog"},
+    {"id": "ACM-260", "title": "Reminder tags", "status": "Todo", "blockedBy": ["ACM-269"],
+     "description": "Let visitors tag reminders."},
+    {"id": "ACM-261", "title": "Tag a reminder", "status": "Ready for Dev", "parent": "ACM-260"},
+    {"id": "ACM-268", "title": "Add a footer", "status": "Ready for Dev"}
+  ]
+}

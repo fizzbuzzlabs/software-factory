@@ -1,0 +1,10 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-245", "title": "Export reminders", "status": "Ready for Dev",
+     "contract_extra": "\n## Footprint\n\n- `sample-app`: `src/export/**`, `src/registry.ts` (additive), `package-lock.json`, `workflows/**`\n"},
+    {"id": "ACM-246", "title": "Import reminders", "status": "Ready for Dev",
+     "contract_extra": "\n## Footprint\n\n- `sample-app`: `src/import/**`, `src/registry.ts` (additive), `package-lock.json`, `workflows/**`\n"}
+  ]
+}

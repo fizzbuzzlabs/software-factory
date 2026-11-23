@@ -1,0 +1,7 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-55", "title": "Add a footer link", "status": "Ready for QA"}
+  ]
+}

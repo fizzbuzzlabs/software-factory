@@ -1,0 +1,12 @@
+{
+  "name": "verifier-web",
+  "private": true,
+  "type": "module",
+  "description": "Playwright recording harness and screenshot image helper for the verifier-web skill.",
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "pixelmatch": "^8.0.0",
+    "playwright": "^1.61.1",
+    "pngjs": "^7.0.0"
+  }
+}

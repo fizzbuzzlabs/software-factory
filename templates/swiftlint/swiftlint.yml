@@ -1,0 +1,40 @@
+included:
+  - App
+  - AppTests
+
+excluded:
+  - App/Generated
+
+only_rules:
+  - force_cast
+  - force_try
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - file_length
+  - function_body_length
+  - type_body_length
+  - custom_rules
+
+file_length:
+  warning: 500
+  error: 1000
+
+function_body_length:
+  warning: 100
+  error: 200
+
+custom_rules:
+  no_direct_logging:
+    name: no_direct_logging
+    regex: '(?<![\w.])(?<!func )(?:os\s*\.\s*)?(?:print|debugPrint|dump|NSLog|os_log|Logger|OSLog)\s*\(|\bFileHandle\s*\.\s*standardError\b'
+    excluded:
+      - '/App/Logging/'
+    excluded_match_kinds:
+      - comment
+      - doccomment
+      - comment.mark
+      - comment.url
+      - doccomment.field
+      - string
+    message: 'Log through the logger module, at the level the event deserves, with fields rather than an interpolated string.'
+    severity: error

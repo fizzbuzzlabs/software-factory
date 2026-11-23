@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__linear",
+      "mcp__github",
+      "Bash(bash .dev/worker.sh *)",
+      "Bash(bash .dev/verify.sh*)",
+      "Bash(git worktree *)",
+      "Bash(git -C * worktree *)",
+      "Bash(git branch -D *)",
+      "Bash(git -C * branch -D *)",
+      "Bash(git -C * fetch *)"
+    ]
+  }
+}

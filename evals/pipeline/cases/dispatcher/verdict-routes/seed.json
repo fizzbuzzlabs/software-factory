@@ -1,0 +1,88 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 50,
+  "tickets": [
+    {
+      "id": "ACM-80",
+      "title": "Add a search box",
+      "status": "Ready for Dev",
+      "workers": {
+        "dev": [
+          {
+            "status": "done",
+            "summary": "implemented behaviors 1-2; verify FAIL: the search box does not render",
+            "extra": {
+              "verify": "FAIL"
+            }
+          },
+          {
+            "status": "done",
+            "extra": {
+              "verify": "PASS"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ACM-81",
+      "title": "Deduplicate reminders",
+      "status": "Ready for QA",
+      "workers": {
+        "qa": [
+          {
+            "summary": "1 ambiguity blocks testing",
+            "writes": {
+              "workflows/{folder}/test-plan.md": "# Test plan\n\n## Open ambiguities\n\n- AMB-1 (open): the contract does not say whether a duplicate reminder is rejected or merged.\n"
+            },
+            "extra": {
+              "route": "spec_done",
+              "findings": [
+                "AMB-1: the contract does not say whether a duplicate reminder is rejected or merged"
+              ]
+            }
+          },
+          {
+            "extra": {
+              "route": "in_review",
+              "findings": "none"
+            }
+          }
+        ],
+        "architect": {
+          "summary": "QA-bounced iterate: folded AMB-1 into contract.md; the implementation already satisfies it",
+          "extra": {
+            "route": "ready_for_qa"
+          },
+          "writes": {
+            "workflows/{folder}/contract.md": "# Contract: Deduplicate reminders\n\n## Modules\n\n- `src/acm-81` \u2014 owns this change.\n\n## Behaviors\n\n- [x] 1. The smallest end-to-end proof of the change.\n- [x] 2. The rest of the change.\n- [x] 3. A reminder that duplicates an existing one (same title and due instant) is rejected with 409 `duplicate`; nothing is merged.\n\n## Anti-Behaviors\n\n- None.\n\n## Assumptions\n\n- Duplicates are rejected, not merged: the implementation already does this, and rejecting loses no data.\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "ACM-82",
+      "title": "Sort reminders by date",
+      "status": "Ready for QA",
+      "workers": {
+        "qa": [
+          {
+            "summary": "1 defect",
+            "extra": {
+              "route": "ready_for_dev",
+              "findings": [
+                "DEF-9: reminders with the same date come back in insertion order, not by title"
+              ]
+            }
+          },
+          {
+            "extra": {
+              "route": "in_review",
+              "findings": "none"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

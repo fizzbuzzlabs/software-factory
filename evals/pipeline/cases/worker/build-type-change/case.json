@@ -1,0 +1,6 @@
+{
+  "stage": "dev", "folder": "2026-11-02-acm-205-snooze-a-reminder", "timeout_minutes": 120,
+  "seed_message": "spec, research, design and contract",
+  "ticket": {"id": "ACM-205", "title": "Snooze a reminder", "description": "Let people put a reminder off until later."},
+  "documents": [{"from": "contract-fresh/seed/branch/workflows/2026-11-02-acm-201-snooze-a-reminder/spec.md", "to": "spec.md", "replace": {"ACM-201": "ACM-205"}}, {"from": "_shared/research.md", "to": "research.md"}, {"from": "_shared/snooze-design.md", "to": "design.md"}, {"from": "_shared/snooze-contract.md", "to": "contract.md", "box": "[ ]"}]
+}

@@ -1,0 +1,12 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {
+      "id": "ACM-1",
+      "title": "Add a greeting endpoint",
+      "description": "Visitors should get a greeting from GET /hello.",
+      "status": "Spec Done"
+    }
+  ]
+}

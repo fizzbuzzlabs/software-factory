@@ -1,0 +1,8 @@
+{
+  "prompt": "/factory-stage dev",
+  "timeout_minutes": 30,
+  "tickets": [
+    {"id": "ACM-140", "title": "Add a contact form", "status": "Ready for Dev"},
+    {"id": "ACM-141", "title": "Add a pricing page", "status": "Ready for QA"}
+  ]
+}

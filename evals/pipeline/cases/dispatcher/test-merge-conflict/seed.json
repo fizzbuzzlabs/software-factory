@@ -1,0 +1,11 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-250", "title": "Shared header for reminders", "status": "Ready for QA"},
+    {"id": "ACM-251", "title": "Shared header for search", "status": "Ready for Dev",
+     "workers": {"dev": {"delay": 20,
+                         "writes": {"src/acm-251.txt": "implementation of ACM-251\n",
+                                    "src/shared.txt": "header written by ACM-251\n"}}}}
+  ]
+}

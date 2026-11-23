@@ -1,0 +1,10 @@
+{
+  "prompt": "/factory-pipeline",
+  "timeout_minutes": 40,
+  "tickets": [
+    {"id": "ACM-240", "title": "Group reminders by day", "status": "Ready for Dev",
+     "contract_extra": "\n## Footprint\n\n- `sample-app`: `src/reminders/**`, `tests/reminders/**`\n"},
+    {"id": "ACM-241", "title": "Search reminders", "status": "Ready for Dev",
+     "contract_extra": "\n## Footprint\n\n- `sample-app`: `src/reminders/list.ts`, `src/search/**`\n"}
+  ]
+}

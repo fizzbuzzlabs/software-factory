@@ -1,0 +1,5 @@
+// Paste these two lines into the "scripts" block of this repo's package.json.
+// typecheck must cover every tsconfig project: add one `tsc --noEmit -p <tsconfig>`
+// per project (joined with &&), or use `tsc -b` if the projects use references.
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit -p tsconfig.json"

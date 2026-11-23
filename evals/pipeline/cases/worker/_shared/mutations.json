@@ -1,0 +1,10 @@
+{
+  "RENAME_WEAK_TITLE": {
+    "find": "const title = parseTitle(body);",
+    "replace": "const raw = \"title\" in body ? body.title : undefined;\n      const title = typeof raw === \"string\" && raw !== \"\" ? { outcome: \"ok\", value: raw } : { outcome: \"rejected\", reason: \"invalid_title\" };"
+  },
+  "RENAME_RESETS_STATUS": {
+    "find": "{ ...reminder, title }",
+    "replace": "{ ...reminder, title, status: \"open\" }"
+  }
+}

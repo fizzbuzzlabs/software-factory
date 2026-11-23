@@ -1,0 +1,7 @@
+{
+  "stage": "qa", "folder": "2026-11-02-acm-208-rename-a-reminder", "timeout_minutes": 90,
+  "seed_message": "spec, research, design, contract and implementation",
+  "branch_overlays": ["rename", "rename-defect"],
+  "ticket": {"id": "ACM-208", "title": "Rename a reminder", "description": "Let people fix a reminder's title."},
+  "documents": [{"from": "_shared/rename-spec.md", "to": "spec.md"}, {"from": "_shared/research.md", "to": "research.md"}, {"from": "_shared/rename-design.md", "to": "design.md"}, {"from": "_shared/rename-contract.md", "to": "contract.md", "box": "[x]"}]
+}
