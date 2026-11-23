@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>FizzBuzz Labs</title>
+  <rect width="512" height="512" fill="#0F172A"/>
+  <rect x="72" y="72" width="80" height="80" rx="16" fill="#334155"/>
+  <rect x="168" y="72" width="80" height="80" rx="16" fill="#334155"/>
+  <rect x="264" y="72" width="80" height="80" rx="16" fill="#2DD4BF"/>
+  <rect x="360" y="72" width="80" height="80" rx="16" fill="#334155"/>
+  <rect x="72" y="168" width="80" height="80" rx="16" fill="#FBBF24"/>
+  <rect x="168" y="168" width="80" height="80" rx="16" fill="#2DD4BF"/>
+  <rect x="264" y="168" width="80" height="80" rx="16" fill="#334155"/>
+  <rect x="360" y="168" width="80" height="80" rx="16" fill="#334155"/>
+  <rect x="72" y="264" width="80" height="80" rx="16" fill="#2DD4BF"/>
+  <rect x="168" y="264" width="80" height="80" rx="16" fill="#FBBF24"/>
+  <rect x="264" y="264" width="80" height="80" rx="16" fill="#334155"/>
+  <rect x="360" y="264" width="80" height="80" rx="16" fill="#2DD4BF"/>
+  <rect x="72" y="360" width="80" height="80" rx="16" fill="#334155"/>
+  <rect x="168" y="360" width="80" height="80" rx="16" fill="#334155"/>
+  <rect x="264" y="360" width="80" height="80" rx="16" fill="#F472B6"/>
+  <rect x="360" y="360" width="80" height="80" rx="16" fill="#334155"/>
+</svg>

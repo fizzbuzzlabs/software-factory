@@ -1,4 +1,4 @@
-# FizzBuzz Software Factory
+# <img src="docs/assets/logo.svg" alt="" width="36" align="top"> FizzBuzz Software Factory
 
 A software factory for non-technical or lightly technical solo builders who want to ship at
 frontier lab velocity.
@@ -9,11 +9,12 @@ frontier lab velocity.
 
 ## What this is
 
-A Claude Code plugin that lets one person run a software team of agents. You write specs and review
-the PRs. The factory manages everything in between, including:
+A Claude Code plugin that lets one person run a software team of agents. You write specs, then
+review the finished tickets together, in the app, from one pooled PR. The factory manages
+everything in between, including:
 
 - sequencing work to account for dependencies
-- merging PRs and resolving conflicts
+- stacking finished tickets for review and resolving conflicts
 - QA'ing the changes and verifying that everything still works
 - designing + refactoring the codebase to keep the codebase clean
 
@@ -38,7 +39,7 @@ the PRs. The factory manages everything in between, including:
 
 03  you review the PR
 └── review-pool → main
-    ├── check each ticket in the app
+    ├── walk through the new features
     └── → merge
 ```
 
@@ -119,14 +120,12 @@ your repo's own.
 
 ## Credits
 
-- The research → design → implement flow builds on HumanLayer's research → plan → implement
-  workflow, described in Dex Horthy's
-  [Advanced Context Engineering for Coding Agents](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents).
-  The `codebase-*` and `web-search-researcher` agents are adapted from
-  [HumanLayer's agents](https://github.com/humanlayer/skills) (MIT). [NOTICE](NOTICE) lists the
-  adapted files and carries their license.
-- Many of the [engineering principles](docs/principles.md) come from
-  [pstack](https://github.com/cursor/plugins/tree/main/pstack) by Lauren Tan (poteto), MIT.
+- The pipeline builds on HumanLayer's
+  [research → plan → implement](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents)
+  workflow, and several agents are adapted from [theirs](https://github.com/humanlayer/skills)
+  (MIT, see [NOTICE](NOTICE)).
+- Many [principles](docs/principles.md) come from Lauren Tan's
+  [pstack](https://github.com/cursor/plugins/tree/main/pstack) (MIT, see [NOTICE](NOTICE)).
 
 These credits acknowledge work this project builds on. They don't imply that its authors are
 affiliated with the project or endorse it.
