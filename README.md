@@ -13,10 +13,12 @@ A Claude Code plugin that lets one person run a software team of agents. You wri
 review the finished tickets together, in the app, from one pooled PR. The factory manages
 everything in between, including:
 
-- sequencing work to account for dependencies
-- stacking finished tickets for review and resolving conflicts
-- QA'ing the changes and verifying that everything still works
-- designing + refactoring the codebase to keep the codebase clean
+- sequencing work
+- resolving conflicts
+- stacking finished tickets
+- verification + QA
+- refactoring the codebase
+- (coming soon) auto-queueing bug fixes
 
 ## How it works
 
